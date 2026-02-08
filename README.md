@@ -329,8 +329,6 @@ Policy Gradient Update:
 - Sutton, R. S., & Barto, A. G. *Reinforcement Learning: An Introduction*
 - Stanford CS234
 - MIT OpenCourseWare
-- OpenAI Spinning Up
-
 ---
 
 ## Final Note ✨
