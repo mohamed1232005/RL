@@ -1,10 +1,10 @@
-# Reinforcement Learning Projects Portfolio
+# Reinforcement Learning Projects Portfolio 🤖📚
 
 This repository contains a complete and rigorous collection of Reinforcement Learning (RL) projects developed in an academic setting. The projects are organized to reflect the **conceptual, mathematical, and algorithmic progression of Reinforcement Learning**, starting from stochastic processes and ending with policy gradient optimization.
 
 ---
 
-## Table of Contents
+## Table of Contents 📑
 
 - [Overview](#overview)
 - [Project Structure](#project-structure)
@@ -21,7 +21,7 @@ This repository contains a complete and rigorous collection of Reinforcement Lea
 
 ---
 
-## Overview
+## Overview 🌍
 
 Reinforcement Learning studies how an agent learns optimal behavior through interaction with an environment. At each time step, the agent:
 - observes the current state
@@ -33,7 +33,7 @@ The objective is to learn a policy that maximizes expected cumulative reward ove
 
 ---
 
-## Project Structure
+## Project Structure 🗂️
 
 ```text
 .
@@ -49,7 +49,7 @@ The objective is to learn a policy that maximizes expected cumulative reward ove
 
 ---
 
-## Technologies Used
+## Technologies Used 🛠️
 
 | Technology | Role |
 |----------|------|
@@ -61,7 +61,7 @@ The objective is to learn a policy that maximizes expected cumulative reward ove
 
 ---
 
-## Markov Chain State Simulation
+## Markov Chain State Simulation 🔗
 
 ### Description
 
@@ -90,7 +90,7 @@ Sum_j P_ij = 1
 
 ---
 
-### Results
+### Results 📈
 
 - State trajectories follow theoretical probabilities
 - Visualization highlights dominant transitions
@@ -98,7 +98,7 @@ Sum_j P_ij = 1
 
 ---
 
-## Multi-Armed Bandit Simulation
+## Multi-Armed Bandit Simulation 🎰
 
 ### Description
 
@@ -125,7 +125,7 @@ Q_{t+1}(a) = Q_t(a) + α ( r_t - Q_t(a) )
 
 ---
 
-### Results
+### Results 📊
 
 - Exploration prevents premature convergence
 - Optimal arm identified over time
@@ -133,7 +133,7 @@ Q_{t+1}(a) = Q_t(a) + α ( r_t - Q_t(a) )
 
 ---
 
-## Policy Evaluation and Improvement in MDPs
+## Policy Evaluation and Improvement in MDPs 🧩
 
 ### Description
 
@@ -163,7 +163,7 @@ P(s'|s,a) * [ R(s,a,s') + γ V(s') ]
 
 ---
 
-### Results
+### Results ✅
 
 - Guaranteed convergence
 - Stable optimal policy obtained
@@ -171,7 +171,7 @@ P(s'|s,a) * [ R(s,a,s') + γ V(s') ]
 
 ---
 
-## Policy Iteration Solution for the Tower of Hanoi
+## Policy Iteration Solution for the Tower of Hanoi 🗼
 
 ### Description
 
@@ -196,7 +196,7 @@ Policy Iteration Algorithm:
 
 ---
 
-### Reward Structure
+### Reward Structure 🎯
 
 | Event | Reward |
 |-----|--------|
@@ -206,7 +206,7 @@ Policy Iteration Algorithm:
 
 ---
 
-### Results
+### Results 🏆
 
 - Optimal policy discovered
 - Minimal number of moves
@@ -214,7 +214,7 @@ Policy Iteration Algorithm:
 
 ---
 
-## Monte Carlo and Temporal-Difference Value Prediction
+## Monte Carlo and Temporal-Difference Value Prediction 📐
 
 ### Description
 
@@ -240,7 +240,7 @@ V(s) ← V(s) + α ( r_{t+1} + γ V(s_{t+1}) - V(s) )
 
 ---
 
-### Results
+### Results 📉📈
 
 - TD converges faster
 - MC has higher variance
@@ -248,7 +248,7 @@ V(s) ← V(s) + α ( r_{t+1} + γ V(s_{t+1}) - V(s) )
 
 ---
 
-## SARSA and Q-Learning for Temporal-Difference Control
+## SARSA and Q-Learning for Temporal-Difference Control 🔀
 
 ### Description
 
@@ -272,7 +272,7 @@ Q(s_t, a_t) ← Q(s_t, a_t) +
 
 ---
 
-### Results
+### Results 🧪
 
 - Q-learning converges to optimal policy
 - SARSA learns safer trajectories
@@ -280,7 +280,7 @@ Q(s_t, a_t) ← Q(s_t, a_t) +
 
 ---
 
-## REINFORCE Monte Carlo Policy Gradient Learning
+## REINFORCE Monte Carlo Policy Gradient Learning 🚀
 
 ### Description
 
@@ -302,7 +302,7 @@ Policy Gradient Update:
 
 ---
 
-### Results
+### Results 🌱
 
 - Direct policy optimization
 - Reward improves across episodes
@@ -310,7 +310,7 @@ Policy Gradient Update:
 
 ---
 
-## Learning Progression Summary
+## Learning Progression Summary 🧭
 
 | Order | Project | Core Concept |
 |----|--------|-------------|
@@ -324,7 +324,7 @@ Policy Gradient Update:
 
 ---
 
-## References
+## References 📚
 
 - Sutton, R. S., & Barto, A. G. *Reinforcement Learning: An Introduction*
 - Stanford CS234
@@ -333,6 +333,6 @@ Policy Gradient Update:
 
 ---
 
-## Final Note
+## Final Note ✨
 
 This repository represents a **full and rigorous journey through Reinforcement Learning**, designed for clarity, correctness, and long-term maintainability.
