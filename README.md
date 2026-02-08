@@ -1,42 +1,42 @@
 # Reinforcement Learning Projects Portfolio 🤖📚
 
-This repository contains a comprehensive collection of Reinforcement Learning (RL) projects developed as part of an advanced academic course. The projects are structured to reflect the **conceptual and historical progression of Reinforcement Learning**, starting from probabilistic foundations and culminating in policy gradient methods.
+This repository contains a complete and rigorous collection of Reinforcement Learning (RL) projects developed in an academic setting. The projects are organized to reflect the **conceptual, mathematical, and algorithmic progression of Reinforcement Learning**, starting from stochastic processes and ending with policy gradient optimization.
 
-Each project is implemented from first principles using Python, with a strong emphasis on:
-- theoretical correctness 🧠
-- algorithmic clarity ⚙️
-- reproducibility 🔁
-- interpretability 🔍
-- visualization of learning dynamics 📊
+All implementations emphasize:
+- mathematical correctness
+- algorithmic transparency
+- reproducibility
+- interpretability
+- visualization of learning dynamics
 
 ---
 
 ## Table of Contents 📑
 
-1. [Overview](#overview)
-2. [Project Structure](#project-structure)
-3. [Technologies Used](#technologies-used)
-4. [Project 1: Markov Chain State Simulation](#project-1-markov-chain-state-simulation)
-5. [Project 2: Multi-Armed Bandit Simulation](#project-2-multi-armed-bandit-simulation)
-6. [Project 3: Policy Evaluation and Improvement in MDPs](#project-3-policy-evaluation-and-improvement-in-mdps)
-7. [Project 4: Policy Iteration Solution for the Tower of Hanoi](#project-4-policy-iteration-solution-for-the-tower-of-hanoi)
-8. [Project 5: Monte Carlo and Temporal-Difference Value Prediction](#project-5-monte-carlo-and-temporal-difference-value-prediction)
-9. [Project 6: SARSA and Q-Learning for Temporal-Difference Control](#project-6-sarsa-and-q-learning-for-temporal-difference-control)
-10. [Project 7: REINFORCE: Monte Carlo Policy Gradient Learning](#project-7-reinforce-monte-carlo-policy-gradient-learning)
-11. [Learning Progression Summary](#learning-progression-summary)
-12. [References](#references)
+1. Overview  
+2. Project Structure  
+3. Technologies Used  
+4. Markov Chain State Simulation  
+5. Multi-Armed Bandit Simulation  
+6. Policy Evaluation and Improvement in MDPs  
+7. Policy Iteration Solution for the Tower of Hanoi  
+8. Monte Carlo and Temporal-Difference Value Prediction  
+9. SARSA and Q-Learning for Temporal-Difference Control  
+10. REINFORCE: Monte Carlo Policy Gradient Learning  
+11. Learning Progression Summary  
+12. References  
 
 ---
 
 ## Overview 🌍
 
-Reinforcement Learning is a computational framework for modeling and solving **sequential decision-making problems under uncertainty**. An RL agent interacts with an environment over discrete time steps, receiving observations and rewards, and learning a strategy (policy) to maximize cumulative reward.
+Reinforcement Learning studies how an agent can learn optimal behavior through interaction with an environment. At each time step, the agent:
+- observes the current state
+- selects an action
+- receives a reward
+- transitions to a new state
 
-This repository follows the standard RL taxonomy:
-- **Prediction vs Control**
-- **Model-based vs Model-free**
-- **On-policy vs Off-policy**
-- **Value-based vs Policy-based methods**
+The goal is to learn a policy that maximizes expected cumulative reward over time.
 
 ---
 
@@ -58,201 +58,232 @@ This repository follows the standard RL taxonomy:
 
 ## Technologies Used 🛠️
 
-| Technology | Purpose |
-|----------|--------|
-| Python | Core programming language |
+| Technology | Role |
+|----------|------|
+| Python | Core language |
 | NumPy | Numerical computation |
 | Matplotlib | Visualization |
-| NetworkX | Graph-based modeling |
-| Gymnasium | RL environment framework |
+| NetworkX | Graph modeling |
+| Gymnasium | Environment framework |
 
 ---
 
-# Project 1: Markov Chain State Simulation 🔗
+# 1. Markov Chain State Simulation 🔗
 
-## Theoretical Background
+## Problem Description
 
-A **Markov Chain** is a stochastic process that satisfies the **Markov property**:
+This project models a **discrete-time Markov chain**, a stochastic process in which the next state depends only on the current state.
 
-\[
-\mathbb{P}(X_{t+1} = s' \mid X_t = s, X_{t-1}, \dots, X_0)
+### Markov Property
+
+The defining property of a Markov chain is:
+
+$$
+P(X_{t+1} = s' \mid X_t = s, X_{t-1}, \dots, X_0)
 =
-\mathbb{P}(X_{t+1} = s' \mid X_t = s)
-\]
+P(X_{t+1} = s' \mid X_t = s)
+$$
 
-The system is fully defined by a **transition probability matrix** \( \mathbf{P} \):
+### Transition Matrix
 
-\[
-\mathbf{P}_{ij} = \mathbb{P}(X_{t+1} = j \mid X_t = i)
-\]
+The system is fully described by a transition matrix \( P \), where:
 
-Each row of \( \mathbf{P} \) satisfies:
+$$
+P_{ij} = P(X_{t+1} = j \mid X_t = i)
+$$
 
-\[
-\sum_{j} \mathbf{P}_{ij} = 1
-\]
+Each row satisfies:
 
----
-
-## Results 📈
-
-- Correct stochastic transitions
-- Empirical trajectories match transition probabilities
-- Directed graph visualization improves interpretability
+$$
+\sum_{j} P_{ij} = 1
+$$
 
 ---
 
-# Project 2: Multi-Armed Bandit Simulation 🎰
+## Implementation Details
 
-## Problem Definition
+- Finite discrete state space (bus stops)
+- Explicit transition probability matrix
+- Random sampling of next states
+- Simulation of state trajectories
+- Directed weighted graph visualization
 
-At each time step \( t \), the agent selects an action (arm) \( a_t \) and receives a reward:
+---
 
-\[
-r_t \sim \mathcal{R}(a_t)
-\]
+## Results
 
-The goal is to maximize:
+- Empirical trajectories follow theoretical probabilities
+- Visualization reveals dominant transitions
+- Clear demonstration of stochastic dynamics
 
-\[
+---
+
+# 2. Multi-Armed Bandit Simulation 🎰
+
+## Problem Description
+
+The multi-armed bandit problem models **decision-making without state transitions**. At each step, the agent chooses one action (arm) and receives a stochastic reward.
+
+The objective is to maximize expected cumulative reward:
+
+$$
 \mathbb{E}\left[\sum_{t=1}^{T} r_t \right]
-\]
+$$
 
 ---
 
-## ε-Greedy Action Selection 🎯
+## ε-Greedy Strategy
 
-\[
+Action selection follows:
+
+$$
 a_t =
 \begin{cases}
-\text{random action}, & \text{with probability } \varepsilon \\\\
-\arg\max_a Q_t(a), & \text{with probability } 1 - \varepsilon
+\text{random action} & \text{with probability } \varepsilon \\
+\arg\max_a Q_t(a) & \text{with probability } 1 - \varepsilon
 \end{cases}
-\]
+$$
 
-### Incremental Action-Value Update
+### Incremental Value Update
 
-\[
+$$
 Q_{t+1}(a) = Q_t(a) + \alpha \left( r_t - Q_t(a) \right)
-\]
+$$
 
 ---
 
-## Results 📊
+## Results
 
-- Exploration accelerates convergence
-- Average reward converges to optimal arm
+- Exploration prevents premature convergence
+- Optimal arm identified over time
 - Clear exploration–exploitation trade-off
 
 ---
 
-# Project 3: Policy Evaluation and Improvement in MDPs 🧩
+# 3. Policy Evaluation and Improvement in MDPs 🧩
 
-## Markov Decision Process
+## Problem Description
 
-An MDP is defined by the tuple:
+This project introduces **Markov Decision Processes (MDPs)**, defined by the tuple:
 
-\[
-\langle \mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma \rangle
-\]
+$$
+(\mathcal{S}, \mathcal{A}, P, R, \gamma)
+$$
 
 ---
 
-## Policy Evaluation 🔄
+## Policy Evaluation
 
-\[
+The state-value function for a policy \( \pi \) is defined as:
+
+$$
 V^{\pi}(s)
 =
 \sum_{a \in \mathcal{A}} \pi(a \mid s)
 \sum_{s' \in \mathcal{S}}
-\mathcal{P}(s' \mid s, a)
+P(s' \mid s, a)
 \left[
-\mathcal{R}(s,a,s') + \gamma V^{\pi}(s')
+R(s,a,s') + \gamma V^{\pi}(s')
 \right]
-\]
+$$
 
 ---
 
-## Policy Improvement ⬆️
+## Policy Improvement
 
-\[
+A greedy improvement step yields:
+
+$$
 \pi'(s)
 =
 \arg\max_{a}
 \sum_{s'}
-\mathcal{P}(s' \mid s, a)
+P(s' \mid s, a)
 \left[
-\mathcal{R}(s,a,s') + \gamma V(s')
+R(s,a,s') + \gamma V(s')
 \right]
-\]
+$$
 
 ---
 
-## Results ✅
+## Results
 
-- Guaranteed convergence
-- Stable optimal policy
-- Exact match with dynamic programming theory
+- Guaranteed convergence to optimal policy
+- Stable value function estimates
+- Exact alignment with DP theory
 
 ---
 
-# Project 4: Policy Iteration Solution for the Tower of Hanoi 🗼
+# 4. Policy Iteration Solution for the Tower of Hanoi 🗼
 
-## Algorithm: Policy Iteration
+## Problem Description
 
-1. Initialize arbitrary policy \( \pi_0 \)
-2. **Policy Evaluation** until convergence
-3. **Policy Improvement**
+This project formulates the Tower of Hanoi as a **deterministic MDP** with a combinatorial state space.
+
+- State space size: \( 3^n \)
+- Deterministic transitions
+- Explicit reward shaping
+
+---
+
+## Policy Iteration Algorithm
+
+1. Initialize arbitrary policy
+2. Evaluate policy until convergence
+3. Improve policy greedily
 4. Repeat until policy is stable
 
 ---
 
-## Reward Structure 🎯
+## Reward Design
 
 | Event | Reward |
 |-----|--------|
 | Valid move | −1 |
 | Invalid move | −10 |
-| Goal reached | +100 |
+| Goal state | +100 |
 
 ---
 
-## Results 🏆
+## Results
 
-- Optimal solution obtained
-- Minimal number of moves
-- Visual verification through animation
+- Optimal solution discovered
+- Minimal number of steps
+- Verified via visualization
 
 ---
 
-# Project 5: Monte Carlo and Temporal-Difference Value Prediction 📐
+# 5. Monte Carlo and Temporal-Difference Value Prediction 📐
 
-## Monte Carlo Update 🔁
+## Problem Description
 
-\[
+This project compares **Monte Carlo** and **Temporal-Difference (TD)** learning for value prediction under a fixed policy.
+
+---
+
+## Monte Carlo Update
+
+$$
 V(s) \leftarrow V(s) + \alpha \left( G_t - V(s) \right)
-\]
+$$
 
-where:
+where the return is:
 
-\[
+$$
 G_t = \sum_{k=0}^{T-t-1} \gamma^k r_{t+k+1}
-\]
+$$
 
 ---
 
-## TD(0) Update ⚡
+## TD(0) Update
 
-\[
-V(s) \leftarrow V(s) + \alpha
-\left(
-r_{t+1} + \gamma V(s_{t+1}) - V(s)
-\right)
-\]
+$$
+V(s) \leftarrow V(s) + \alpha \left( r_{t+1} + \gamma V(s_{t+1}) - V(s) \right)
+$$
 
 ---
 
-## Results 📉📈
+## Results
 
 - TD converges faster
 - MC exhibits higher variance
@@ -260,11 +291,11 @@ r_{t+1} + \gamma V(s_{t+1}) - V(s)
 
 ---
 
-# Project 6: SARSA and Q-Learning for Temporal-Difference Control 🔀
+# 6. SARSA and Q-Learning for TD Control 🔀
 
-## SARSA (On-Policy) 🔵
+## SARSA (On-Policy)
 
-\[
+$$
 Q(s_t, a_t)
 \leftarrow
 Q(s_t, a_t)
@@ -277,13 +308,13 @@ r_{t+1}
 -
 Q(s_t, a_t)
 \right]
-\]
+$$
 
 ---
 
-## Q-Learning (Off-Policy) 🔴
+## Q-Learning (Off-Policy)
 
-\[
+$$
 Q(s_t, a_t)
 \leftarrow
 Q(s_t, a_t)
@@ -296,50 +327,50 @@ r_{t+1}
 -
 Q(s_t, a_t)
 \right]
-\]
+$$
 
 ---
 
-## Results 🧪
+## Results
 
 - Q-learning converges to optimal policy
 - SARSA learns safer trajectories
-- Clear on-policy vs off-policy behavior
+- Clear on-policy vs off-policy distinction
 
 ---
 
-# Project 7: REINFORCE: Monte Carlo Policy Gradient Learning 🚀
+# 7. REINFORCE: Monte Carlo Policy Gradient Learning 🚀
 
 ## Objective Function
 
-\[
-J(\theta) = \mathbb{E}_{\pi_\theta}
+$$
+J(\theta) =
+\mathbb{E}_{\pi_\theta}
 \left[
 \sum_{t=0}^{T-1} \gamma^t r_{t+1}
 \right]
-\]
+$$
 
 ---
 
-## Gradient Update Rule 🧮
+## Policy Gradient Update
 
-\[
+$$
 \theta \leftarrow \theta
 +
 \alpha
 \,
 G_t
 \,
-\nabla_\theta
-\log \pi_\theta(a_t \mid s_t)
-\]
+\nabla_\theta \log \pi_\theta(a_t \mid s_t)
+$$
 
 ---
 
-## Results 🌱
+## Results
 
-- Policy improves over episodes
-- Reward convergence observed
+- Direct policy optimization
+- Reward improvement across episodes
 - Correct gradient-based learning dynamics
 
 ---
@@ -348,29 +379,25 @@ G_t
 
 | Order | Project | Core Concept |
 |----|--------|-------------|
-| 1 | Markov Chain State Simulation | Stochastic Processes |
-| 2 | Multi-Armed Bandit Simulation | Exploration vs Exploitation |
-| 3 | Policy Evaluation and Improvement in MDPs | Dynamic Programming |
-| 4 | Policy Iteration Solution for the Tower of Hanoi | Planning |
-| 5 | Monte Carlo and TD Value Prediction | Model-Free Prediction |
-| 6 | SARSA and Q-Learning | TD Control |
-| 7 | REINFORCE | Policy Gradient Methods |
+| 1 | Markov Chains | Stochastic Processes |
+| 2 | Bandits | Exploration |
+| 3 | DP for MDPs | Planning |
+| 4 | Policy Iteration | Optimal Control |
+| 5 | MC & TD | Prediction |
+| 6 | SARSA & Q-Learning | Control |
+| 7 | REINFORCE | Policy Gradients |
 
 ---
 
 ## References 📚
 
-1. Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*. MIT Press  
-   http://incompleteideas.net/book/the-book-2nd.html
-
-2. Stanford CS234 – Reinforcement Learning  
-   https://web.stanford.edu/class/cs234/
-
-3. OpenAI Spinning Up  
-   https://spinningup.openai.com
+- Sutton & Barto, *Reinforcement Learning: An Introduction*
+- Stanford CS234
+- MIT OpenCourseWare
+- OpenAI Spinning Up
 
 ---
 
 ## Final Note ✨
 
-This repository represents a **complete and rigorous journey through Reinforcement Learning**, emphasizing mathematical foundations, algorithmic correctness, and conceptual clarity.
+This repository represents a **full theoretical and practical journey through Reinforcement Learning**, from probabilistic foundations to modern policy optimization.
